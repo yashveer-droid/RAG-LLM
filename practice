@@ -1,0 +1,5 @@
+import pandas as pd
+df = pd.read_csv('../../top_rated_wines.csv')
+df = df[df['variety'].notna()] # remove any NaN values as it blows up serialization
+data = df.sample(700).to_dict('records') # Get only 700 records. More records will make it slower to index
+len(data)
